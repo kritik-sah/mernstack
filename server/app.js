@@ -1,10 +1,17 @@
 const express = require('express');
 const app = express();
 
+// Middleware
+const Middleware = (req,res, next) => {
+    console.log("hello i am middleware")
+    next();
+}
+
+
 app.get('/' , (req,res) => {
     res.send('kya bolte bantai!');
 })
-app.get('/about' , (req,res) => {
+app.get('/about' , Middleware , (req,res) => {
     res.send('About us!');
 })
 app.get('/contact' , (req,res) => {
@@ -13,7 +20,6 @@ app.get('/contact' , (req,res) => {
 app.get('/login' , (req,res) => {
     res.send('login karlo friends!');
 })
-
 
 
 
